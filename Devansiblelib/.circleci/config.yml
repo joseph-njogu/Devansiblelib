@@ -32,3 +32,52 @@ jobs:
             . venv/bin/activate
             flake8 --exclude=venv* --statistics
             pytest -v --cov=calculator
+
+          #run the custom verify command 
+      - run:
+          name: verify git tag vs. version
+          command: |
+            python3 -m venv venv
+            . venv/bin/activate
+            python setup.py verify
+
+      - run:
+          name: init .pypirc
+          command: |
+            echo -e "[pypi]" >> ~/.pypirc
+            echo -e "username = njogu487" >> ~/.pypirc
+            echo -e "password = $maseno10" >> ~/.pypirc
+      - run:
+          name: create packages
+          command: |
+            make package
+          # create a source distribution
+            python setup.py sdist
+          # create a wheel
+            python setup.py bdist_wheel
+          #uploading to the pypi registry  
+      - run:
+          name: upload to pypi
+          command: |
+            . venv/bin/activate
+            twine upload dist/*
+
+          #Deploying
+  workflows:
+  version: 2
+  build_and_deploy:
+    jobs:
+      - build:
+          filters:
+            tags:
+              only: /.*/
+
+            #deploy task  
+      - deploy:
+          requires:
+            - build
+          filters:
+            tags:
+              only: /[0-9]+(\.[0-9]+)*/
+            branches:
+              ignore: /.*/  
