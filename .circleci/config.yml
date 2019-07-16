@@ -42,16 +42,16 @@ jobs:
             . venv/bin/activate
             python setup.py verify
 
-       - run:
-          name: create packages
-          command: |
-            make package
-            python setup.py sdist
-            python setup.py bdist_wheel
+      - run:
+        name: create packages
+        command: |
+          make package
+          python setup.py sdist
+          python setup.py bdist_wheel
 
-         - run:
-          name: upload to pypi
-          command: |
-            . venv/bin/activate
-            twine upload dist/*
+      - run:
+        name: upload to pypi
+        command: |
+          . venv/bin/activate
+          twine upload dist/*
             
