@@ -43,11 +43,18 @@ jobs:
             python setup.py verify
 
       - run:
+          name: init .pypirc
+          command: |
+            echo -e "[pypi]" >> ~/.pypirc
+            echo -e "username = njogu487" >> ~/.pypirc
+            echo -e "password = $maseno10" >> ~/.pypirc      
+
+      - run:
         name: create packages
         command: |
-          make package
-          python setup.py sdist
-          python setup.py bdist_wheel
+                make package
+                python setup.py sdist
+                python setup.py bdist_wheel
 
       - run:
         name: upload to pypi
