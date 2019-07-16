@@ -53,8 +53,8 @@ jobs:
         name: create packages
       
         steps:
-            step1: python setup.py sdist
-            step2: python setup.py bdist_wheel
+            - run: python setup.py sdist
+            - run: python setup.py bdist_wheel
 
       - run:
         name: upload to pypi
