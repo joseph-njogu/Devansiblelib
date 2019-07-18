@@ -24,7 +24,7 @@ def run(self):
     if tag != VERSION:
         info = "Git tag: {0} does not match \
             the version of this app: {1}".format(
-                        tag, VERSION)
+            tag, VERSION)
 
         sys.exit(info)
 
@@ -72,13 +72,12 @@ setup(
         ],
 
     keywords='circleci ci cd api sdk',
-    packages=['circleci'],
     install_requires=[
         'requests==2.18.4',
-        ],
+    ],
 
     python_requires='>=3',
     cmdclass={
             'verify': VerifyVersionCommand,
-            }
+        }
 )
