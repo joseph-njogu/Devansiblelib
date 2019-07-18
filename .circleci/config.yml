@@ -9,7 +9,7 @@ jobs:
   build:
     # builds occur in a docker container
     docker:
-      - image: circleci/python@sha256:a3d1014187ff2e65a1cc1777608eccd7abae4cf97f4ff439e72b105ab736b76b
+      - image: circleci/python:3.7
     working_directory: ~/repo
 
     # series/ list of steps done for the build
