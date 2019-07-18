@@ -50,9 +50,9 @@ jobs:
             echo -e "password = $PYPI_PASSWORD" >> ~/.pypirc      
 
       - run:
-        name: create packages
-        command: |
-          python setup.py sdist
+          name: create packages
+          command: |
+            python setup.py sdist
 
       - run:
         name: upload to pypi
