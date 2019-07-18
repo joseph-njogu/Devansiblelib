@@ -55,8 +55,8 @@ jobs:
             python setup.py sdist
 
       - run:
-        name: upload to pypi
-        command: |
-          . venv/bin/activate
-          twine upload dist/*
+          name: upload to pypi
+          command: |
+            . venv/bin/activate
+            twine upload dist/*
             
