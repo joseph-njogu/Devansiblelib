@@ -1,7 +1,7 @@
 # Python CircleCI 2.0 configuration file
 
 #should always start with a version number
-version: 1
+version: 2
 
 # jobs refer to a single execution of the build
 jobs:
@@ -40,7 +40,7 @@ jobs:
           command: |
             python3 -m venv venv
             . venv/bin/activate
-            python setup.py verify
+          #  python setup.py verify
 
       - run:
           name: init .pypirc
