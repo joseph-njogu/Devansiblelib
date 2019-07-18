@@ -47,13 +47,12 @@ jobs:
           command: |
             echo -e "[pypi]" >> ~/.pypirc
             echo -e "username = njogu487" >> ~/.pypirc
-            echo -e "password = $maseno10" >> ~/.pypirc      
+            echo -e "password = $PYPI_PASSWORD" >> ~/.pypirc      
 
       - run:
         name: create packages
-        steps:
-          - run: python setup.py sdist
-          - run: python setup.py bdist_wheel
+        command: |
+          python setup.py sdist
 
       - run:
         name: upload to pypi
