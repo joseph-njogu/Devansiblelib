@@ -34,7 +34,7 @@ def run(self):
 
 setup(
     name='Devansiblelib',
-    version='1.2.0',
+    version='1.2.1',
     description="Python wrapper for the CircleCI API",  # Optional
     long_description=long_description,  # Optional
     long_description_content_type='text/markdown',  # Optional (see note above)
